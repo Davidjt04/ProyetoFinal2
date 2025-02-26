@@ -1,0 +1,2 @@
+FROM mysql:latest
+# Exponer el puerto 3306 (puerto por defecto de MySQL)
