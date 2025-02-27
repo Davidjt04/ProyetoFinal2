@@ -1,0 +1,33 @@
+  # services:
+  #   frontend:
+  #     build:
+  #       context: ./frontend
+  #     container_name: front
+  #     ports:
+  #       - "8081:80"
+  #     depends_on:
+  #       - BD
+  #       - Backend
+
+  #   bd:
+  #     build:
+  #       context: ./bd
+  #     container_name: bd
+  #     environment:
+  #       MYSQL_ROOT_PASSWORD: root
+  #       MYSQL_DATABASE: andaluciaskills 
+
+  #     volumes:
+  #     - mysql_data:/var/lib/mysql  # Para persistencia de datos
+
+  #     ports:
+  #       - "3307:3306"
+  # volumes:
+  #   mysql_data:
+      
+    # backend:
+    #   build:
+    #     context: ./back
+    #   container_name: back
+    #   depends_on:
+    #   - BD

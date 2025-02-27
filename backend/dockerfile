@@ -1,0 +1,15 @@
+# Usamos una imagen base oficial de PHP con Apache
+FROM php:8.1-apache
+
+# Instalar extensiones necesarias de PHP para MySQL
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Copiar el contenido de nuestra carpeta /public en el contenedor
+COPY ./public /var/www/html/
+
+# Dar permisos adecuados a la carpeta pública para Apache
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
+# Exponer el puerto 80 para poder acceder desde el navegador
+EXPOSE 80
