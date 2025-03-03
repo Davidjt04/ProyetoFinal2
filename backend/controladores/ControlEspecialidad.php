@@ -15,11 +15,9 @@ class ControlEspecialidad{
                 if ($id === 'todos') {
                     $especialidades = $this->servicioEspecialidad->Todos();
                     echo json_encode($especialidades);
-                    // var_dump($especialidades);
 
                 }else {
                     $especialidad = $this->servicioEspecialidad->validaExiste($id);
-                    // var_dump($especialidad);
                     echo json_encode($especialidad);    
                 }
 
@@ -35,8 +33,7 @@ class ControlEspecialidad{
     }
     public function ControlPost(){
         $data = json_decode(file_get_contents('php://input'), true);
-        // $entidad = $_GET['entidad'];
-        // var_dump($entidad);
+
         $idespecialidad = $data['idespecialidad'];
         $nombre = $data['nombre'];
         $codigo = $data['codigo'];

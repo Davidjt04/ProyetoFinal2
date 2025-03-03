@@ -1,0 +1,26 @@
+<?php
+class ApiParticipante{
+
+    private ControlParticipante $controlador;
+
+    public function __construct(ControlParticipante $controlador) {
+        $this->controlador = $controlador;
+    }
+
+    public function manejarSolicitud(){
+        $metodo = $_SERVER['REQUEST_METHOD'];
+
+        switch ($metodo) {
+            case 'GET':
+                $this->controlador->controlGet();
+                break;
+
+            case 'POST':    
+                $this->controlador->ControlPost();
+                break;
+
+            case 'DELETE': 
+                $this->controlador->ControlDelete();
+        }
+    }
+}
