@@ -1,8 +1,8 @@
 <?php
 class Especialidad{
-    private int $idespecialidad;
-    private String $nombre;
-    private String $codigo;
+    public int $idespecialidad;
+    public String $nombre;
+    public String $codigo;
     
 
 public function __construct($idespecialidad, $nombre, $codigo){

@@ -1,10 +1,10 @@
 <?php
-class ControlEspecialidad{
-    private ServicioEspecialidad $servicioEspecialidad;
+class ControlEvaluacion{
+    private ServicioEvaluacion $servicioEvaluacion;
 
     // Constructor donde inyectamos el servicio
-    public function __construct(ServicioEspecialidad $servicioEspecialidad) {
-        $this->servicioEspecialidad = $servicioEspecialidad;
+    public function __construct(ServicioEvaluacion $servicioEvaluacion) {
+        $this->servicioEvaluacion = $servicioEvaluacion;
     }
 
     public function controlGet(){
@@ -13,14 +13,14 @@ class ControlEspecialidad{
 
             try{
                 if ($id === 'todos') {
-                    $especialidades = $this->servicioEspecialidad->Todos();
-                    echo json_encode($especialidades);
+                    $evaluaciones = $this->servicioEvaluacion->Todos();
+                    echo json_encode($evaluaciones);
                     // var_dump($especialidades);
 
                 }else {
-                    $especialidad = $this->servicioEspecialidad->validaExiste($id);
+                    $evaluacion = $this->servicioEvaluacion->validaExiste($id);
                     // var_dump($especialidad);
-                    echo json_encode($especialidad);    
+                    echo json_encode($evaluacion);    
                 }
 
                 
@@ -35,15 +35,16 @@ class ControlEspecialidad{
     }
     public function ControlPost(){
         $data = json_decode(file_get_contents('php://input'), true);
-        // $entidad = $_GET['entidad'];
-        // var_dump($entidad);
-        $idespecialidad = $data['idespecialidad'];
-        $nombre = $data['nombre'];
-        $codigo = $data['codigo'];
 
-        $especialidadPost = new Especialidad($idespecialidad,$nombre, $codigo);
-        if( $this->servicioEspecialidad->CamposExiste($especialidadPost)){
-            $this->servicioEspecialidad->crear($especialidadPost);
+        $idevaluacion = $data['idevaluacion'];
+        $notaFinal = $data['notaFinal'];
+        $participante_idparticipante = $data['participante_idparticipante'];
+        $ususario_idususario = $data['ususario_idususario'];
+        $prueba_idprueba = $data['prueba_idprueba'];
+
+        $evaluacionPost = new Evaluacion($idevaluacion,$notaFinal,$participante_idparticipante, $ususario_idususario,$prueba_idprueba);
+        if( $this->servicioEvaluacion->CamposExiste($evaluacionPost)){
+            $this->servicioEvaluacion->crear($evaluacionPost);
 
         }else{
             echo json_encode(["Error: no esta completo el objeto "]);
@@ -53,7 +54,7 @@ class ControlEspecialidad{
     public function ControlDelete(){
         if($_GET["id"]){
             $id =  $_GET['id'];
-            $especialidad = $this->servicioEspecialidad->borrar($id);
+            $evaluacion = $this->servicioEvaluacion->borrar($id);
             try{
                 echo json_encode(["Borado satisfactoriamente"]);
 

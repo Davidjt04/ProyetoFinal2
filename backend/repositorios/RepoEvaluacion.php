@@ -49,7 +49,7 @@ class RepoEvaluacion{
             $stmt = $conexion->prepare("INSERT INTO evaluacion (idevaluacion, notaFinal, participante_idparticipante, ususario_idususario, prueba_idprueba) 
             VALUES (:idevaluacion, :notaFinal, :participante_idparticipante, :ususario_idususario, :prueba_idprueba)");
 
-            $idevaluacion = $evaluacion->getIdespecialidad();
+            $idevaluacion = $evaluacion->getIdevaluacion();
             $notaFinal = $evaluacion->getNotaFinal();
             $participante_idparticipante = $evaluacion->getParticipanteIdparticipante();
             $ususario_idususario = $evaluacion->getUsusarioIdususario();
